@@ -1,0 +1,1168 @@
+$mainColor: #ff3801;
+$linesColor: #ebedee;
+$textColor: #333333;
+
+/* Main styles start */
+body {
+  font-family: Lato, sans-serif;
+  color: $textColor;
+  min-width: 320px;
+
+  a {
+    color: inherit;
+  }
+}
+
+.container {
+  max-width: 1640px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 40px;
+    height: 1px;
+    background-color: $linesColor;
+    z-index: 1001;
+  }
+}
+
+/* Modal window for callback start */
+#modal {
+  display: none;
+  width: 300px;
+  cursor: auto;
+
+  & input {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+    outline: none;
+    height: 38px;
+    border: 1px solid #e6e6e6;
+    padding: 0px 10px;
+  }
+
+  & input[type="submit"] {
+    background-color: $mainColor;
+    border: none;
+    cursor: pointer;
+  }
+}
+/* Modal window for callback end */
+
+.view {
+  display: grid;
+  grid-template-columns: 52% 48%;
+  grid-template-areas:
+    "first first"
+    "third second"
+    "third fourth"
+    "third fourth"
+    "third fourth";
+
+  .header {
+    grid-area: first;
+    margin: 0 0 28px 0;
+
+    display: grid;
+    grid-template-columns: 1fr 240px 1fr;
+    grid-template-rows: 40px 128px 53px;
+    grid-template-areas:
+      "nav nav personality"
+      "connect logo searchField"
+      "contentNav contentNav contentNav";
+
+    &__nav {
+      grid-area: nav;
+
+      display: flex;
+
+      &-item {
+        font-size: 13px;
+        line-height: 40px;
+        margin: 0 20px 0 0;
+
+        &:hover {
+          color: $mainColor;
+          transition: color 0.2s linear;
+        }
+      }
+    }
+
+    &__personality {
+      grid-area: personality;
+      justify-self: end;
+
+      display: flex;
+      align-items: center;
+      font-size: 13px;
+      line-height: 40px;
+
+      .personality__log-in {
+        display: inline-block;
+        width: 100px;
+        text-align: center;
+        border-left: 1px solid $linesColor;
+        color: #000000;
+        padding-left: 20px;
+        position: relative;
+
+        &:before {
+          content: url("../images/face.png");
+          position: absolute;
+          top: 3px;
+          left: 20px;
+        }
+        
+        &:hover {
+          color: $mainColor;
+          transition: color 0.2s linear;
+        }
+      }
+
+      .personality__favorites {
+        display: inline-block;
+        width: 130px;
+        text-align: center;
+        border-left: 1px solid $linesColor;
+        color: #000000;
+        padding-left: 20px;
+        position: relative;
+
+        &:before {
+          content: url("../images/heart.svg");
+          position: absolute;
+          top: 3px;
+          left: 20px;
+        }
+
+        &:hover {
+          color: $mainColor;
+          transition: color 0.2s linear;
+        }
+      }
+
+      .personality__basket {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 140px;
+        height: 41px;
+        text-align: center;
+        cursor: pointer;
+        background-color: $mainColor;
+        color: #fff;
+
+        &:before {
+          content: url("../images/basket.png");
+          margin: 0 7px 0 0;
+        }
+
+        .personality__basket-count {
+          color: #ebe26a;
+          margin: 0 0 0 5px;
+        }
+        
+        &:hover {
+          background: #e63301;
+          transition: background-color 0.2s linear;
+        }
+
+        &:active {
+          background: #ff5f32;
+        }
+
+      }
+    }
+
+    &__connect {
+      grid-area: connect;
+      align-self: center;
+
+      &-contact {
+        font-size: 18px;
+        line-height: 20px;
+        letter-spacing: -0.45px;
+        margin: 0 15px 0 0;
+
+        &:hover {
+          color: $mainColor;
+          transition: color 0.2s linear;
+        }
+      }
+
+      &-btn {
+        display: block;
+        width: 133px;
+        height: 29px;
+        border-radius: 2px;
+        background-color: #89c238;
+        font-size: 12px;
+        letter-spacing: 0.3px;
+        color: #fff;
+        margin-top: 8px;
+        text-align: center;
+        line-height: 29px;
+
+        &:hover {
+          background-color: #76a731;
+          transition: background-color 0.2s linear;
+        }
+
+        &:active {
+          background-color: #9ddf41;
+        }
+      }
+    }
+
+    &__logo {
+      grid-area: logo;
+      justify-self: center;
+      align-self: center;
+
+      cursor: pointer;
+
+      &-img {
+        max-width: 100%;
+      }
+    }
+
+    &__search-field {
+      grid-area: searchField;
+      justify-self: end;
+      align-self: center;
+
+      position: relative;
+
+      &:before {
+        content: url("../images/magnifying-glass.png");
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        cursor: pointer;
+      }
+
+      &-inner {
+        width: 200px;
+        height: 35px;
+        border-radius: 17.5px;
+        border: solid 1px #bdc3c7;
+        padding: 0 0 0 35px;
+        font-size: 13px;
+        line-height: 35px;
+        letter-spacing: 0.33px;
+        color: #666666;
+      }
+    }
+
+    &__content-nav {
+      grid-area: contentNav;
+
+      border-top: 1px solid $linesColor;
+      border-bottom: 1px solid $linesColor;
+
+      &-list {
+        display: flex;
+        height: 100%;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      &-item {
+        font-size: 16px;
+        letter-spacing: -0.08px;
+        font-weight: 600;
+
+        &:hover {
+          color: $mainColor;
+          transition: color 0.2s linear;
+        }
+      }
+    }
+  }
+
+  .title {
+    grid-area: second;
+    font-family: "Open Sans", sans-serif;
+    align-self: end;
+    min-height: 0;
+
+    &__wrap {
+      margin: 68px 19px 0 0;
+      max-width: 410px;
+    }
+
+    &__category {
+      font-size: 14px;
+      margin: 0 0 10px 0;
+      color: $mainColor;
+    }
+
+    &__text {
+      font-size: 24px;
+      line-height: 30px;
+    }
+  }
+
+  .slider {
+    grid-area: third;
+
+    .path {
+      font-family: "Open Sans", sans-serif;
+      font-size: 13px;
+    }
+
+    &__wrapper {
+      max-width: 100%;
+      max-height: 100%;
+      margin: auto;
+      display: flex;
+
+      .slider-small {
+        max-width: 60px;
+        margin: 10px 0 0 20px;
+        text-align: center;
+
+        &__item {
+          margin: 10px 0 10px 0;
+          cursor: pointer;
+        }
+
+        .slick-list {
+          overflow: hidden;
+          margin: 20px 0 22px 0;
+
+          .slick-track {
+            display: block;
+
+            .slick-slide {
+              opacity: 0.5;
+
+              &.slick-current,
+              &:hover {
+                opacity: 1;
+                transition: opacity 0.2s linear;
+              }
+            }
+          }
+        }
+
+        .slick-arrow {
+          text-align: center;
+          font-size: 0;
+          background: transparent;
+
+          &.slick-prev {
+            text-align: center;
+
+            &::before {
+              content: url("../images/arrow.png");
+              display: inline-block;
+              transform: rotate(180deg);
+            }
+
+            &.slick-disabled {
+              visibility: hidden;
+            }
+          }
+
+          &.slick-next {
+            text-align: center;
+
+            &::before {
+              content: url("../images/arrow.png");
+              display: inline-block;
+              top: 10px;
+            }
+
+            &.slick-disabled {
+              visibility: hidden;
+            }
+          }
+        }
+      }
+
+      .slider-big {
+        margin: 60px 20px 0 20px;
+        min-width: 0;
+        display: flex;
+        flex: 1 1 auto;
+        justify-content: center;
+        align-items: center;
+
+        .slick-list {
+          max-width: 440px;
+          overflow: hidden;
+
+          .slick-track {
+            display: flex;
+          }
+        }
+
+        &__img {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+
+  .about {
+    grid-area: fourth;
+    font-family: "Open Sans", sans-serif;
+    margin: 20px 0 0 0;
+    min-height: 415px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 66px 99px 98px 1fr;
+    grid-template-areas:
+      "top top top top top socials socials"
+      "sizes sizes sizes sizes sizes sizes sizes"
+      "order order order advantages advantages advantages advantages"
+      "info info info info info info info";
+
+    &__star {
+      display: inline-block;
+      content: url("../images/star.png");
+    }
+
+    .facebook-ref {
+      content: url("../images/social-refs/facebook.svg");
+
+      &:hover {
+        opacity: 0.7;
+        transition: opacity 0.2s linear;
+      }
+    }
+
+    .vk-ref {
+      content: url("../images/social-refs/vk.svg");
+      margin: 0 3.5px;
+
+      &:hover {
+        opacity: 0.7;
+        transition: opacity 0.2s linear;
+      }
+    }
+
+    .google-ref {
+      content: url("../images/social-refs/google.png");
+
+      &:hover {
+        opacity: 0.7;
+        transition: opacity 0.2s linear;
+      }
+    }
+
+    &__top {
+      grid-area: top;
+
+      display: flex;
+      justify-content: space-between;
+      margin: 0 0 22px 0;
+
+      &-pricelow {
+        font-size: 16px;
+        line-height: 20px;
+
+        .cost {
+          font-size: 22px;
+          font-weight: 700;
+          margin: 0 7px 0 0;
+        }
+      }
+
+      &-pricehigh {
+        font-size: 13px;
+        line-height: 20px;
+        color: #999999;
+        text-decoration: line-through;
+
+        .cost {
+          margin: 0 7px 0 0;
+        }
+      }
+    }
+
+    &__recalls {
+      margin: 3px 19px 0 20%;
+
+      &-text {
+        font-size: 13px;
+        line-height: 34px;
+      }
+    }
+
+    &__socials {
+      grid-area: socials;
+      justify-self: end;
+      margin: 3px 1px 0 0;
+    }
+
+    &__sizes {
+      grid-area: sizes;
+
+      font-size: 13px;
+      margin: 2px 0 29px 0;
+
+      &-title {
+        margin: 0 0 18px 0;
+      }
+
+      &-item {
+        font-family: "Gotham", sans-serif;
+        width: 40px;
+        height: 40px;
+        border: 1px solid #ccc;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        margin: 0 6.5px 0 0;
+
+        &.active {
+          border: 2px solid $mainColor;
+          transition: border 0.2s linear;
+        }
+      }
+    }
+
+    &__order {
+      grid-area: order;
+
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin: 0 0 33px 0;
+
+      &-buy {
+        width: 100%;
+        position: relative;
+      }
+
+      &-info {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 0 12px 0;
+      }
+
+      &-availability {
+        color: $mainColor;
+        margin: 0 5px 0 0;
+      }
+
+      &-like {
+        position: absolute;
+        width: 17px;
+        height: 16px;
+        background: url("../images/heart.svg") no-repeat;
+        top: 37px;
+        left: 191px;
+      }
+
+      &-btn {
+        width: 160px;
+        height: 40px;
+        background: $mainColor;
+        color: #ffffff;
+        text-transform: uppercase;
+        font-size: 14px;
+        letter-spacing: 1.4px;
+        font-family: "Lato", sans-serif;
+
+        &:hover {
+          background: #e63301;
+          transition: background-color 0.2s linear;
+        }
+
+        &:active {
+          background: #ff5f32;
+        }
+      }
+
+      &-advantages {
+        margin: 0 20px;
+        white-space: nowrap;
+      }
+    }
+
+    &__advantages {
+      grid-area: advantages;
+      margin: 0 0 0 19%;
+      letter-spacing: -0.6px;
+
+      &-item {
+        display: block;
+        margin: 0 0 11px 0;
+
+        &:hover {
+          color: $mainColor;
+        }
+      }
+    }
+
+    &__info {
+      grid-area: info;
+      &-title {
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0 0 15px 0;
+      }
+
+      &-visible {
+        line-height: 20px;
+        font-size: 13px;
+      }
+
+      &-hidden {
+        display: none;
+        line-height: 20px;
+        font-size: 13px;
+      }
+
+      &-rolling-up {
+        display: inline-block;
+        color: $mainColor;
+        cursor: pointer;
+        margin: 15px 0 34px 0;
+        font-size: 13px;
+      }
+    }
+  }
+}
+
+/* Main styles finished */
+
+/* tablet 1024px  */
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 0;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 100px;
+      height: 1px;
+      background-color: $linesColor;
+      z-index: 1001;
+    }
+  }
+
+  body.lock {
+    overflow: hidden;
+  }
+
+  .view {
+    .header {
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-template-rows: 40px 60px;
+      grid-template-areas:
+        "nav nav nav nav nav nav nav nav connect connect connect connect connect connect connect connect connect"
+        "contentNav searchField . logo logo logo logo logo logo logo logo logo logo logo personality personality personality";
+
+      margin: 0;
+      max-width: 100%;
+      z-index: 1000;
+      background: #fff !important;
+
+      &__nav {
+        padding: 0 0 0 18px;
+
+        &-item:last-child {
+          display: none;
+        }
+      }
+
+      &__connect {
+        display: flex;
+        justify-self: end;
+
+        &-contact {
+          font-size: 16px;
+          line-height: 40px;
+        }
+
+        &-btn {
+          width: 180px;
+          height: 40px;
+          line-height: 40px;
+          margin: 0;
+          font-size: 16px;
+          border-radius: 0;
+        }
+      }
+
+      &__content-nav {
+        border: none;
+        width: 60px;
+
+        &-list {
+          position: fixed;
+          background: #fff;
+          padding: 110px 25px 15px 25px;
+          display: block;
+          left: -100%;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          z-index: -1;
+          text-align: center;
+          transition: all 0.5s ease 0s;
+          overflow: auto;
+        }
+
+        /* Burger menu */
+
+        .burger {
+          display: flex;
+          height: 100%;
+          width: 100%;
+          border-right: 1px solid $linesColor;
+          justify-content: center;
+          align-items: center;
+
+          &::before {
+            content: url("../images/burger/burgMenu.svg");
+          }
+
+          &.active::before {
+            content: url("../images/burger/burgCross.svg");
+          }
+        }
+
+        &-list.active {
+          left: 0;
+        }
+
+        &-item {
+          display: block;
+          border-radius: 5px;
+          border: 3px solid $mainColor;
+          margin-top: 5px;
+          background: #fbab95;
+          box-shadow: 0 0 15px #fbab95;
+          line-height: 35px;
+        }
+      }
+
+      &__search-field {
+        justify-self: start;
+        width: 60px;
+        height: 60px;
+        border-right: 1px solid $linesColor;
+
+        &::before {
+          content: url("../images/magnifying-glass-orange.png");
+          top: 18.5px;
+          left: 19.5px;
+        }
+
+        &-inner {
+          display: none;
+        }
+      }
+
+      &__logo {
+        width: 171px;
+      }
+
+      &__personality {
+        line-height: 0px;
+
+        .personality__log-in {
+          font-size: 0;
+          width: 60px;
+          height: 60px;
+          padding-left: 0;
+          order: 2;
+
+          &:before {
+            transform: scale(1.4);
+            top: 22.5px;
+            left: 21.5px;
+          }
+        }
+
+        .personality__favorites {
+          font-size: 0;
+          width: 60px;
+          height: 60px;
+          padding-left: 0;
+          order: 1;
+
+          &:before {
+            transform: scale(1.4);
+            top: 22.5px;
+            left: 21.5px;
+          }
+        }
+
+        .personality__basket {
+          font-size: 0;
+          width: 60px;
+          height: 60px;
+          background-color: #fff;
+          border-left: 1px solid $linesColor;
+          border-top: 1px solid $linesColor;
+          order: 3;
+
+          &:before {
+            content: url("../images/basket-orange.png");
+            margin: 0;
+          }
+        }
+      }
+    }
+
+    .title {
+      &__wrap {
+        margin: 45px 19px 0 0;
+      }
+    }
+
+    .slider {
+      .path {
+        display: none;
+      }
+
+      &__wrapper {
+        .slider-small {
+          .slick-list {
+            margin: 0 0 2px 0;
+          }
+        }
+
+        .slider-big {
+          max-width: 400px;
+          margin: 35px 20px 0 20px;
+        }
+      }
+    }
+
+    .about {
+      margin: 20px 19px 0 0;
+
+      grid-template-rows: 66px 98px 1fr;
+      grid-template-areas:
+        "top top top top socials socials ."
+        "order order order order advantages advantages advantages"
+        "info info info info info info info";
+
+      &__recalls {
+        margin: 3px 3px 0 20%;
+      }
+
+      &__socials {
+        margin: 10px 5px 0 0;
+      }
+
+      &__sizes {
+        display: none;
+        grid-area: unset;
+      }
+
+      &__order {
+        margin: 6px 0 33px 0;
+      }
+
+      &__advantages {
+        margin: 5px 0 0 19%;
+      }
+
+      &__info {
+        margin: 5px 0 0 0;
+      }
+    }
+  }
+}
+
+/* tablet 900px */
+
+@media (max-width: 900px) {
+  .container {
+    &::before {
+      position: fixed;
+    }
+
+    &::after {
+      position: fixed;
+    }
+  }
+
+  .view {
+    .header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+
+      grid-template-areas:
+        "connect connect connect connect connect connect connect connect connect connect connect connect connect connect connect connect connect"
+        "contentNav searchField . logo logo logo logo logo logo logo logo logo logo logo personality personality personality";
+
+      &__nav {
+        grid-area: unset;
+
+        &-item {
+          display: none;
+        }
+      }
+
+      &__connect {
+        justify-self: stretch;
+        justify-content: space-between;
+
+        &-contacts {
+          margin: 0 0 0 18px;
+        }
+      }
+    }
+
+    .title {
+      margin: 100px 0 0 0;
+    }
+
+    .slider {
+      margin: 100px 0 0 0;
+    }
+
+    .about {
+      grid-template-areas:
+        "top top top top top socials socials"
+        "order order order order advantages advantages advantages"
+        "info info info info info info info";
+
+      &__recalls {
+        margin: 3px 19px 0 20%;
+      }
+
+      &__advantages {
+        margin: 5px 0 0 10%;
+      }
+    }
+  }
+}
+
+/* tablet 768px */
+
+@media (max-width: 768px) {
+  .view {
+    grid-template-columns: 100%;
+    grid-template-areas:
+      "first"
+      "second"
+      "third"
+      "fourth";
+
+    .header {
+      grid-template-areas:
+        "connect connect connect connect connect connect connect connect connect connect connect connect connect connect connect connect connect"
+        "contentNav contentNav . logo logo logo logo logo logo logo logo logo logo logo personality personality personality";
+
+      &__connect {
+        &-btn {
+          width: 160px;
+        }
+      }
+
+      &__search-field {
+        grid-area: unset;
+        display: none;
+      }
+
+      &__personality {
+        .personality__log-in {
+          grid-area: unset;
+          display: none;
+        }
+
+        .personality__favorites {
+          grid-area: unset;
+          display: none;
+        }
+      }
+    }
+
+    .title {
+      &__wrap {
+        margin: 28px 19px 0 18px;
+        max-width: 100%;
+      }
+    }
+
+    .slider {
+      margin: 0;
+
+      &__wrapper {
+        .slider-big {
+          max-width: 100%;
+        }
+      }
+    }
+
+    .about {
+      margin: 0 19px;
+
+      grid-template-columns: 52% 48%;
+      grid-template-rows: 56px 97px 1fr 101px;
+      grid-template-areas:
+        "top top"
+        "order order"
+        "info info"
+        "advantages socials";
+
+      &__top {
+        margin: 0;
+        align-self: end;
+
+        &-pricelow {
+          font-size: 22px;
+        }
+      }
+
+      &__recalls {
+        margin: 0;
+      }
+
+      &__socials {
+        margin: 1px 1px 0 0;
+      }
+
+      .facebook-ref,
+      .vk-ref,
+      .google-ref {
+        width: 30px;
+        height: 30px;
+      }
+
+      &__order {
+        &-buy {
+          display: flex;
+          flex-direction: column;
+        }
+
+        &-info {
+          margin: 21px 0 0 0;
+          order: 2;
+          font-size: 12px;
+        }
+
+        &-like {
+          order: 3;
+          top: 56px;
+          left: auto;
+          right: 2px;
+        }
+
+        &-btn {
+          order: 1;
+          width: 100%;
+          font-size: 12px;
+          letter-spacing: 0.6px;
+          line-height: 40px;
+        }
+      }
+
+      &__info {
+        &-title {
+          margin: 0 0 24px 0;
+        }
+        &-rolling-up {
+          margin: 24px 0 27px 0;
+        }
+      }
+
+      &__advantages {
+        margin: 0;
+
+        &-item {
+          margin: 0 0 7px 0;
+        }
+      }
+    }
+  }
+}
+
+/* mobile phone 425px */
+
+/* 425.6????? */
+@media (max-width: 426px) {
+  .container {
+    &::after {
+      top: 30px;
+    }
+    &::before {
+      top: 80px;
+    }
+  }
+  .view {
+    .header {
+      grid-template-rows: 30px 50px;
+      grid-template-areas:
+        "connect connect connect connect connect connect connect connect connect connect connect connect connect connect connect connect connect"
+        "contentNav contentNav . logo logo logo logo logo logo logo logo logo logo logo personality personality personality";
+
+      &__connect {
+        &-contacts {
+          margin: 0 0 0 13px;
+        }
+
+        &-contact {
+          font-size: 14px;
+          line-height: 30px;
+        }
+
+        &-btn {
+          width: 80px;
+          height: 30px;
+          line-height: 30px;
+          font-size: 14px;
+        }
+        .rus {
+          display: none;
+        }
+
+        .eng {
+          display: block;
+        }
+      }
+
+      &__logo {
+        width: 142px;
+      }
+
+      &__personality {
+        .personality__basket {
+          width: 50px;
+          height: 50px;
+        }
+      }
+
+      &__content-nav {
+        width: 50px;
+      }
+    }
+
+    .title {
+      margin: 80px 0 0 0;
+    }
+
+    .slider {
+      &-small {
+        display: none;
+      }
+
+      &-big {
+        margin: 14px 20px;
+      }
+    }
+  }
+}
